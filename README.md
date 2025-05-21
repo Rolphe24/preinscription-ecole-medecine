@@ -1,66 +1,115 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projet Laravel : Préinscription en ligne pour une école de médecine
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📅 Objectif du projet
 
-## About Laravel
+Ce projet est une application Laravel permettant aux étudiants de se préinscrire en ligne dans une école de médecine. Elle est en cours de développement.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Fonctionnalités déjà disponibles :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Formulaire de préinscription pour les étudiants (nom, âge, dateIncription.)
+* Enregistrement des informations dans la base de données
+* Accès réservé à l'administrateur (`matsokakelv99@gmail.com`) pour consulter les inscriptions
+* Possibilité d'ajouter d'autres administrateurs
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Fonctionnalités à venir :
 
-## Learning Laravel
+* Envoi automatique d'un mail de confirmation de réservation
+* Délai limite pour se présenter physiquement
+* Annulation automatique de la réservation si la date est dépassée
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 💻 Installation en local (pour tester le projet)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Prérequis :
 
-## Laravel Sponsors
+* PHP 8.1 ou supérieur
+* Composer
+* MySQL
+* XAMPP ou Laravel Valet/WAMP
+* Git (pour cloner le projet)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. Cloner le projet
 
-### Premium Partners
+```bash
+https://github.com/Rolphe24/preinscription-ecole-medecine.git
+cd preinscription-ecole-medicale
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 3. Installer les dépendances
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Créer et configurer le fichier `.env`
 
-## Code of Conduct
+Copier le fichier `.env.example` en `.env`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+Modifier les informations de connexion à la base de données :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+DB_DATABASE=nom_de_ta_base
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+### 5. Générer la clé de l'application
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
+
+### 6. Lancer les migrations et seeders
+
+```bash
+php artisan migrate --seed
+```
+
+> 🔊 Un compte admin est automatiquement créé avec :
+>
+> * Email : `matsokakelv99@gmail.com`
+> * Mot de passe : `Rolphe2000`
+
+### 7. Lancer le serveur local
+
+```bash
+php artisan serve
+```
+
+Accéder au projet sur `http://localhost:8000`
+
+---
+
+## 🌐 Structure des dossiers (principaux)
+
+* `app/Models` : Modèles Laravel (ex. User.php)
+* `database/migrations` : Fichiers de structure de la base de données
+* `database/seeders` : Création des utilisateurs admin par défaut
+* `resources/views` : Fichiers Blade (interface utilisateur)
+* `routes/web.php` : Routes du projet
+
+---
+
+## 🔒 Sécurité
+
+* Le fichier `.env` est **dans le .gitignore** donc ne sera pas publié
+* L'accès aux données est protégé par authentification admin
+
+---
+
+## ✍️ Auteur
+
+**Kelvy Rolphe MATSOKA FOUTI**
+Email : [matsokakelvy99@gmail.com](mailto:matsokakelvy99@gmail.com)
+Projet réalisé dans un cadre d'évaluation de compétences web avec Laravel.
+
+---
+
+## 🚀 Idée d'évolution
+
+Ce projet pourra à terme devenir une vraie plateforme de gestion des inscriptions, des relances par e-mail, et d'administration scolaire.
